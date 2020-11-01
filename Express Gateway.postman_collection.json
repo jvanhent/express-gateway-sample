@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "900f7811-9ad0-4ade-9b59-3c6fc1798e63",
+		"name": "Express Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "psd2 v2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "sandbox-api",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/kak2?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"kak2"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "psd2 v2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "sandbox-api",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"test\": \"data\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/kak2?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"kak2"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "psd2 v2 redirect",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/redirect?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"redirect"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "psd2 v1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/psd2/v1/kak1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v1",
+						"kak1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scenario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/scenario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"scenario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cash v1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cash/v1/kak1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cash",
+						"v1",
+						"kak1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scen - cash v1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"value": "scen cash v1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cash/v1/kak1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cash",
+						"v1",
+						"kak1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scen - psd2 v2 - json",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"value": "scen 1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"test\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/kak2?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"kak2"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scen - psd2 v2 - text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"type": "text",
+						"value": "scen 1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "gewoon test data",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/kak2?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"kak2"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scen - psd2 v2 redirect - json",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"type": "text",
+						"value": "scen 1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"test\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/redirect?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"redirect"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scen - psd2 v2 redirect - text",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"type": "text",
+						"value": "scen 1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "djuu, das text",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/psd2/v2/redirect?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"psd2",
+						"v2",
+						"redirect"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "proxy 200",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"type": "text",
+						"value": "sandbox-api"
+					},
+					{
+						"key": "x-scenario-id",
+						"type": "text",
+						"value": "scen 1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"test\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/psd2/v2/kak2?param=present",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"psd2",
+						"v2",
+						"kak2"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "present"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

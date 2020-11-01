@@ -1,0 +1,54 @@
+http:
+  port: 8080
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  psd2-v2:
+    host: sandbox-api
+    paths: '/psd2/v2*'
+  psd2-v1:
+    host: sandbox-api
+    paths: '/psd2/v1*'
+  cash-v1:
+    host: sandbox-api
+    paths: '/cash/v1*'
+serviceEndpoints:
+  backend-psd2-v2:
+    url: 'http://localhost:9090/backend-psd2-v2'
+  backend-psd2-v1:
+    url: 'http://localhost:9090/backend-psd2-v1'
+  backend-cash-v1:
+    url: 'http://localhost:9090/backend-cash-v1'
+policies:
+  - proxy
+  - scenario-intercept
+pipelines:
+  psd2-v2:
+    apiEndpoints:
+      - psd2-v2
+    policies:
+      - scenario-intercept:
+      - proxy:
+        - action: &proxyAction
+            followRedirects: false
+            serviceEndpoint: backend-psd2-v2
+            changeOrigin: false
+  psd2-v1:
+    apiEndpoints:
+      - psd2-v1
+    policies:
+      - scenario-intercept:
+      - proxy:
+          - action:
+              <<: *proxyAction
+              serviceEndpoint: backend-psd2-v1
+  cash-v1:
+    apiEndpoints:
+      - cash-v1
+    policies:
+      - scenario-intercept:
+      - proxy:
+          - action:
+              <<: *proxyAction
+              serviceEndpoint: backend-cash-v1 
