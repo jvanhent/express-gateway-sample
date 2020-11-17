@@ -21,8 +21,9 @@ app.use('*redirect', (req, res) => {
 	res.redirect('http://www.google.com')
 })
 
-app.use('/scenario', (req, res) => {
+app.use('*scenario', (req, res) => {
 	const data = { 'scenario original url': req.originalUrl }
+	//data.scen = req.headers['x-scenario-id']
 	console.log(data)
 	res.status(200).set('content-type', 'application/json').send(data)
 })

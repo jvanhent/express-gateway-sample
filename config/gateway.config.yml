@@ -13,6 +13,10 @@ apiEndpoints:
   cash-v1:
     host: sandbox-api
     paths: '/cash/v1*'
+  scenario:
+    host: scenario
+  host-not-found:
+    paths: '*'
 serviceEndpoints:
   backend-psd2-v2:
     url: 'http://localhost:9090/backend-psd2-v2'
@@ -20,35 +24,82 @@ serviceEndpoints:
     url: 'http://localhost:9090/backend-psd2-v1'
   backend-cash-v1:
     url: 'http://localhost:9090/backend-cash-v1'
+  backend-scenario:
+    url: 'http://localhost:9090/backend-scenario'
+  local:
+    url: 'http://localhost:8080'
 policies:
   - proxy
   - scenario-intercept
+  - log
 pipelines:
-  psd2-v2:
+  local:
+    apiEndpoints:
+      - host-not-found
+    policies:
+      - log: 
+          - action:    
+              message: Host header Not Found - ${req.method} ${req.originalUrl} - ${JSON.stringify(req.headers)} 
+      - proxy:
+          - condition:
+              name: 'x-forwarded-host'
+            action: 
+              followRedirects: false
+              serviceEndpoint: local
+              changeOrigin: false
+  psd2-v2: 
     apiEndpoints:
       - psd2-v2
     policies:
       - scenario-intercept:
+      - log: 
+          - action:    
+              message: Sending to backend-psd2-v2 - ${req.method} ${req.originalUrl} # parameter for log action
       - proxy:
-        - action: &proxyAction
-            followRedirects: false
-            serviceEndpoint: backend-psd2-v2
-            changeOrigin: false
+          - action: 
+              serviceEndpoint: backend-psd2-v2
+              proxyUrl: http://localhost:9000
+              followRedirects: false
+              changeOrigin: false
   psd2-v1:
     apiEndpoints:
       - psd2-v1
     policies:
       - scenario-intercept:
+      - log: 
+          - action:    
+              message: Sending to backend-psd2-v1 - ${req.method} ${req.originalUrl} # parameter for log action
       - proxy:
           - action:
-              <<: *proxyAction
               serviceEndpoint: backend-psd2-v1
+              proxyUrl: http://localhost:9000
+              followRedirects: false
+              changeOrigin: false
   cash-v1:
     apiEndpoints:
       - cash-v1
     policies:
       - scenario-intercept:
+      - log: 
+          - action:    
+              message: Sending to backend-cash-v1 - ${req.method} ${req.originalUrl} # parameter for log action
       - proxy:
           - action:
-              <<: *proxyAction
               serviceEndpoint: backend-cash-v1 
+              proxyUrl: http://localhost:9000
+              followRedirects: false
+              changeOrigin: false
+  scenario:
+    apiEndpoints:
+      - scenario
+    policies:
+      - log: 
+          - action:    
+              message: Sending to backend-scenario - ${req.method} ${req.originalUrl} # parameter for log action
+      - proxy:
+          - action:
+              serviceEndpoint: backend-scenario
+              proxyUrl: http://localhost:9000
+              followRedirects: false
+              changeOrigin: false
+            
